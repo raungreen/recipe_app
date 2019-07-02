@@ -4,24 +4,22 @@ import axios from 'axios';
 import Recipes from './component/Recipe';
 
 const App = () => {
-  const APP_ID = '';
-  const APP_KEY = '';
-
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState('');
   const [query, setQuery] = useState('chicken');
 
   useEffect(() => {
+    const getRecipes = async () => {
+      const APP_ID = process.env.REACT_APP_APP_ID;
+      const APP_KEY = process.env.REACT_APP_APP_KEY;
+      const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`;
+      const response = await axios(url);
+      const data = await response.data;
+      setRecipes(data.hits);
+      console.log(data.hits);
+    };
     getRecipes();
   }, [query]);
-
-  const getRecipes = async () => {
-    const url = `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`;
-    const response = await axios(url);
-    const data = await response.data;
-    setRecipes(data.hits);
-    console.log(data.hits);
-  };
 
   const updateSearch = e => {
     setSearch(e.target.value);

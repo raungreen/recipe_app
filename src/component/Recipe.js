@@ -18,8 +18,8 @@ const Recipe = ({
       <h1>{title}: </h1>
       <h3>{dietlabel}</h3>
       <ol>
-        {ingredients.map(ingredient => (
-          <li>{ingredient.text}</li>
+        {ingredients.map((ingredient, recipe) => (
+          <li key={recipe}>{ingredient.text}</li>
         ))}
       </ol>
       <p>{Math.round(calories)} Calories</p>
