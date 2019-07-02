@@ -46,21 +46,23 @@ const App = () => {
           Search
         </button>
       </form>
-      {recipes.map(recipe => (
-        <Recipes
-          key={recipe.recipe.label}
-          title={recipe.recipe.label}
-          calories={recipe.recipe.calories}
-          protein={recipe.recipe.totalNutrients.PROCNT.quantity}
-          carbs={recipe.recipe.totalNutrients.CHOCDF.quantity}
-          fiber={recipe.recipe.totalNutrients.FIBTG.quantity}
-          fat={recipe.recipe.totalNutrients.FAT.quantity}
-          sugar={recipe.recipe.totalNutrients.SUGAR.quantity}
-          dietlabel={recipe.recipe.dietLabels}
-          image={recipe.recipe.image}
-          ingredients={recipe.recipe.ingredients}
-        />
-      ))}
+      <div className="recipes">
+        {recipes.map(recipe => (
+          <Recipes
+            key={recipe.recipe.label}
+            title={recipe.recipe.label}
+            calories={recipe.recipe.calories}
+            // protein={recipe.recipe.totalNutrients.PROCNT.quantity}
+            // carbs={recipe.recipe.totalNutrients.CHOCDF.quantity}
+            // fiber={recipe.recipe.totalNutrients.FIBTG.quantity}
+            // fat={recipe.recipe.totalNutrients.FAT.quantity}
+            // sugar={recipe.recipe.totalNutrients.SUGAR.quantity}
+            dietlabel={recipe.recipe.dietLabels}
+            image={recipe.recipe.image}
+            ingredients={recipe.recipe.ingredients}
+          />
+        ))}
+      </div>
     </div>
   );
 };
